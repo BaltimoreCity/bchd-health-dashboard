@@ -1,0 +1,15 @@
+resources:
+- name: bchd-health-dashboard
+  type: git
+  source:
+    private_key: ((private-repo-key))
+		uri: git@github.com:BaltimoreCity/bchd-health-dashboard.git
+    branch: master
+
+jobs:
+- name: gulp-test
+  plan:
+  - get: bchd-health-dashboard
+    trigger: true
+  - task: tests
+    file: bchd-health-dashboard/ci.yml

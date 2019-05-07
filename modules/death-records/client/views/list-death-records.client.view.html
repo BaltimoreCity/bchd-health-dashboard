@@ -1,0 +1,22 @@
+<section>
+  <div class="page-header">
+    <h1>Death records</h1>
+  </div>
+  <div class="list-group">
+    <a ng-repeat="death-record in vm.deathRecords"
+       ui-sref="deathRecords.view({ death-recordId: death-record._id })"
+       class="list-group-item">
+      <small class="list-group-item-text">
+        Posted on
+        <span ng-bind="deathRecord.created | date:'mediumDate'"></span>
+        by
+        <span ng-if="deathRecord.user" ng-bind="deathRecord.user.displayName"></span>
+        <span ng-if="!deathRecord.user">Deleted User</span>
+      </small>
+      <h4 class="list-group-item-heading" ng-bind="death-record.name"></h4>
+    </a>
+  </div>
+  <div class="alert alert-warning text-center" ng-if="vm.deathRecords.$resolved && !vm.deathRecords.length">
+    No Death records yet, why don't you <a ui-sref="deathRecords.create">create one</a>?
+  </div>
+</section>

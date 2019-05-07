@@ -1,0 +1,13 @@
+platform: linux
+
+image_resource:
+  type: docker-image
+  source:
+    repository: bitnami/mongodb
+    tag: 3.2.11-r2
+
+inputs:
+- name: bchd-health-dashboard
+
+run:
+  path: ./bchd-health-dashboard/ci/spec.sh

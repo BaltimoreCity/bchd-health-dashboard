@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4 col-lg-offset-4 col-sm-6 col-sm-offset-3">
+            <h2>Login</h2>
+            <div class="panel panel-default content-middle">
+                <div class="panel-body">
+                    <form name="vm.userForm" ng-submit="vm.signin(vm.userForm.$valid)" class="signin" novalidate autocomplete="off">
+                        <fieldset>
+                            <uib-alert type="danger" ng-show="vm.error" class="alert alert-danger">
+                                <span ng-bind="vm.error"></span>
+                            </uib-alert>
+                            <div class="form-group" show-errors>
+                                <label for="usernameOrEmail">Email or username</label>
+                                <input type="text" id="usernameOrEmail" name="usernameOrEmail" class="form-control" ng-model="vm.credentials.usernameOrEmail" placeholder="Email or username" required autofocus>
+                                <div ng-messages="vm.userForm.usernameOrEmail.$error" role="alert">
+                                    <p class="help-block error-text" ng-message="required">Your email address or username is required.</p>
+                                </div>
+                            </div>
+                            <div class="form-group" show-errors>
+                                <label for="password">Password</label>
+                                <input type="password" id="password" name="password" class="form-control" ng-model="vm.credentials.password" placeholder="Password" required>
+                                <div ng-messages="vm.userForm.password.$error" role="alert">
+                                    <p class="help-block error-text" ng-message="required">Password is required.</p>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Sign in</button><br/>
+                            <a ui-sref="authentication.signup">Don't have an account? Sign up</a><br/>
+                            <a ui-sref="password.forgot">Forgot your password?</a>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

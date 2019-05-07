@@ -1,0 +1,11 @@
+[Unit]
+Description=BCHD Health Dashboard
+[Service]
+EnvironmentFile=/usr/local/share/bchd/health-dashboard/current/etc/healthdashboard.conf
+WorkingDirectory=/usr/local/share/bchd/health-dashboard/current
+ExecStart=/bin/sh -c 'npm run start >> app.log 2>&1'
+Type=simple
+User=web
+Restart=on-failure
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,60 @@
+{"_id":{"$oid":"59a437892811670d9f309f93"},"cause":"Asthma"}
+{"_id":{"$oid":"59a437892811670d9f309f94"},"cause":"Acute pneumonia"}
+{"_id":{"$oid":"59a437892811670d9f309f95"},"cause":"Hypertensive cardiovascular disease"}
+{"_id":{"$oid":"59a437892811670d9f309f96"},"cause":"Cardiovascular disease"}
+{"_id":{"$oid":"59a437892811670d9f309f97"},"cause":"Hypertensive atherosclerotic cardiovascular disease"}
+{"_id":{"$oid":"59a437892811670d9f309f98"},"cause":"Chronic alcoholism"}
+{"_id":{"$oid":"59a437892811670d9f309f99"},"cause":"Pulmonary thromboembolism"}
+{"_id":{"$oid":"59a437892811670d9f309f9a"},"cause":"Cardiac arrhythmia"}
+{"_id":{"$oid":"59a437892811670d9f309f9b"},"cause":"Cardiomyopathy"}
+{"_id":{"$oid":"59a437892811670d9f309f9c"},"cause":"Atherosclerotic cardiovascular disease"}
+{"_id":{"$oid":"59a437892811670d9f309f9d"},"cause":"Ischemic cardiomyopathy"}
+{"_id":{"$oid":"59a437892811670d9f309f9e"},"cause":"4-fluoroisobutyryl fentanyl"}
+{"_id":{"$oid":"59a437892811670d9f309f9f"},"cause":"n-ethylpentylone"}
+{"_id":{"$oid":"59a437892811670d9f309fa0"},"cause":"Intoxication"}
+{"_id":{"$oid":"59a437892811670d9f309fa1"},"cause":"Acrylfentanyl"}
+{"_id":{"$oid":"59a437892811670d9f309fa2"},"cause":"Alcohol"}
+{"_id":{"$oid":"59a437892811670d9f309fa3"},"cause":"Alprazolam"}
+{"_id":{"$oid":"59a437892811670d9f309fa4"},"cause":"Dilated cardiomyopathy"}
+{"_id":{"$oid":"59a437892811670d9f309fa5"},"cause":"Toxicity"}
+{"_id":{"$oid":"59a437892811670d9f309fa6"},"cause":"Citaopram"}
+{"_id":{"$oid":"59a437892811670d9f309fa7"},"cause":"Cocaine"}
+{"_id":{"$oid":"59a437892811670d9f309fa8"},"cause":"Despropionyl"}
+{"_id":{"$oid":"59a437892811670d9f309fa9"},"cause":"Cyclobenzaprine"}
+{"_id":{"$oid":"59a437892811670d9f309faa"},"cause":"Despropionyl fentanyl"}
+{"_id":{"$oid":"59a437892811670d9f309fab"},"cause":"Furanyl fentanyl"}
+{"_id":{"$oid":"59a437892811670d9f309fac"},"cause":"Dibutylone"}
+{"_id":{"$oid":"59a437892811670d9f309fad"},"cause":"Diazepam"}
+{"_id":{"$oid":"59a437892811670d9f309fae"},"cause":"Heroin"}
+{"_id":{"$oid":"59a437892811670d9f309faf"},"cause":"Methadone"}
+{"_id":{"$oid":"59a437892811670d9f309fb0"},"cause":"Fentanyl"}
+{"_id":{"$oid":"59a437892811670d9f309fb1"},"cause":"Methamphetamine"}
+{"_id":{"$oid":"59a437892811670d9f309fb2"},"cause":"Free morphine"}
+{"_id":{"$oid":"59a437892811670d9f309fb3"},"cause":"Diphenhydramine"}
+{"_id":{"$oid":"59a437892811670d9f309fb4"},"cause":"Ethanol"}
+{"_id":{"$oid":"59a437892811670d9f309fb5"},"cause":"Dextromethorphan"}
+{"_id":{"$oid":"59a437892811670d9f309fb6"},"cause":"Phencyclidine"}
+{"_id":{"$oid":"59a437892811670d9f309fb7"},"cause":"Promethazine"}
+{"_id":{"$oid":"59a437892811670d9f309fb8"},"cause":"Pentylone"}
+{"_id":{"$oid":"59a437892811670d9f309fb9"},"cause":"Morphine"}
+{"_id":{"$oid":"59a437892811670d9f309fba"},"cause":"Tenocyclidine"}
+{"_id":{"$oid":"59a437892811670d9f309fbb"},"cause":"Oxycodone"}
+{"_id":{"$oid":"59a437892811670d9f309fbc"},"cause":"Bilateral pulmonary thromboemboli"}
+{"_id":{"$oid":"59a437892811670d9f309fbd"},"cause":"Trazadone"}
+{"_id":{"$oid":"59a437892811670d9f309fbe"},"cause":"Deep venous thrombosis"}
+{"_id":{"$oid":"59a437892811670d9f309fbf"},"cause":"Xylazine"}
+{"_id":{"$oid":"59a437892811670d9f309fc0"},"cause":"Combined drug"}
+{"_id":{"$oid":"59a437892811670d9f309fc1"},"cause":"Myocardial fibrosis"}
+{"_id":{"$oid":"59a437892811670d9f309fc2"},"cause":"Mixed drug"}
+{"_id":{"$oid":"59a437892811670d9f309fc3"},"cause":"Narcotic"}
+{"_id":{"$oid":"59a437892811670d9f309fc4"},"cause":"Combined effects"}
+{"_id":{"$oid":"59a437892811670d9f309fc5"},"cause":"Homicide"}
+{"_id":{"$oid":"59a437892811670d9f309fc6"},"cause":"Head injuries"}
+{"_id":{"$oid":"59a437892811670d9f309fc7"},"cause":"Head and neck injuries"}
+{"_id":{"$oid":"59a437892811670d9f309fc8"},"cause":"Hanging"}
+{"_id":{"$oid":"59a437892811670d9f309fc9"},"cause":"Metastatic breast cancer"}
+{"_id":{"$oid":"59a437892811670d9f309fca"},"cause":"Metastatic ovarian cancer"}
+{"_id":{"$oid":"59a437892811670d9f309fcb"},"cause":"Cancer"}
+{"_id":{"$oid":"59a437892811670d9f309fcc"},"cause":"Pneumonia"}
+{"_id":{"$oid":"59a437892811670d9f309fcd"},"cause":"Complications"}
+{"_id":{"$oid":"59a437892811670d9f309fce"},"cause":"Multiple injuries"}

@@ -1,0 +1,329 @@
+<section>
+  <section class="container-sidebarred"><!-- ng-attr-class="{{vm.authentication.user ? 'container-sidebarred' : 'container-fluid'}}" -->
+    <div class="alert alert-info alert-banner"><b>Note:</b> These numbers are preliminary and are for internal department use only.</div>
+
+    <h2 class="banner visible-xs-block">filter <small>the data</small></h2>
+
+    <div class="panel panel-default panel-filters">
+      <div class="row">
+        <div class="form-group col-lg-4 col-md-8">
+          <div class="dropdown" uib-dropdown>
+            <a class="btn btn-default btn-outline btn-block dropdown-toggle" type="button"
+              data-toggle="dropdown" uib-dropdown-toggle role="button">
+              <b>Manner of Death <i class="fa fa-caret-down"></i><br/><span class="teal small">{{(vm.filter.mannerOfDeath) ? vm.filter.mannerOfDeath : 'All' }}</span></b>
+            </a>
+            <ul class="dropdown-menu" role="menu">
+              <li ng-click="vm.mannerOfDeathSelected()"><a href="#">All</a></li>
+              <li ng-click="vm.mannerOfDeathSelected('Natural')"><a href="#">Natural</a></li>
+              <li ng-click="vm.mannerOfDeathSelected('Accident')"><a href="#">Accident</a></li>
+              <li ng-click="vm.mannerOfDeathSelected('Homicide')"><a href="#">Homicide</a></li>
+              <li ng-click="vm.mannerOfDeathSelected('Undetermined')"><a href="#">Undetermined</a></li>
+              <li ng-click="vm.mannerOfDeathSelected('Suspected Overdose')"><a href="#">Suspected Overdose</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="form-group col-lg-2 col-md-4">
+          <div class="dropdown" uib-dropdown>
+            <a class="btn btn-default btn-outline btn-block dropdown-toggle" type="button"
+              data-toggle="dropdown" uib-dropdown-toggle role="button">
+              Census Tract <i class="fa fa-caret-down"></i><br/><b class="teal small">{{(vm.filter.censusTract) ? vm.filter.censusTract : 'All' }}</b>
+            </a>
+            <ul class="dropdown-menu" role="menu">
+              <li ng-click="vm.censusTractSelected()"><a href="#">All</a></li>
+              <li ng-repeat="ct in vm.censusTracts">
+                <a href="#" ng-click="vm.censusTractSelected(ct)">{{ct}}</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="form-group col-lg-2 col-md-4 filter-date">
+          <div class="dropdown" uib-dropdown>
+            <a class="btn btn-default btn-outline btn-block dropdown-toggle" type="button"
+              data-toggle="dropdown" uib-dropdown-toggle role="button" ng-click="vm.dateSelected()">
+              Month(s) <i class="fa fa-caret-down"></i><br/><b class="teal small">{{vm.filter.startDate | amDateFormat:'MMM YYYY'}}
+                {{(vm.filter.endDate) ? '-' : ''}}{{vm.filter.endDate | amDateFormat:'MMM YYYY'}}</b>
+            </a>
+            <ul class="dropdown-menu dropdown-lg dropdown-checkboxes" role="menu">
+              <li class="dropdown-header"><h6>Start</h6></li>
+              <li><div uib-datepicker ng-model="vm.filter.startDate" id="startDate"
+                datepicker-options="vm.dateOptionsStart" ng-click="$event.stopPropagation()"></div>
+              </li>
+              <li class="dropdown-header">
+                <button class="pull-right btn btn-default btn-xs btn-outline" ng-click="vm.clearEndDate($event)">
+                  <i class="fa fa-close"></i> Clear</button>
+                <h6>End (optional)</h6>
+              </li>
+              <li><div uib-datepicker ng-model="vm.filter.endDate" id="endDate"
+                datepicker-options="vm.dateOptionsEnd" ng-click="$event.stopPropagation()"></div></li>
+            </ul>
+          </div>
+        </div>
+        <div class="form-group col-lg-2 col-md-4">
+          <div class="dropdown" uib-dropdown>
+            <button class="btn btn-default btn-outline btn-block dropdown-toggle text-left" type="button" data-toggle="dropdown" uib-dropdown-toggle role="button">
+              Demographics <i class="fa fa-caret-down"></i><br/><b class="teal small">{{ (vm.allDemo) ? 'All' : 'Custom' }}</b>
+            </button>
+            <ul class="dropdown-menu dropdown-checkboxes" role="menu">
+              <li class="dropdown-header"><h6>Gender</h6></li>
+              <li><label ng-click="$event.stopPropagation()"><input type="checkbox" ng-model="vm.filter.gender.female" ng-click="vm.toggleGender($event)" ng-disabled="vm.filter.gender.female && vm.onlyOneGender"/>&nbsp;Female</label></li>
+              <li><label ng-click="$event.stopPropagation()"><input type="checkbox" ng-model="vm.filter.gender.male" ng-click="vm.toggleGender($event)" ng-disabled="vm.filter.gender.male && vm.onlyOneGender"/>&nbsp;Male</label></li>
+              <li class="dropdown-header"><h6>Age</h6></li>
+              <li><label ng-click="$event.stopPropagation()"><input type="checkbox" ng-model="vm.filter.age.twentyAndFewer" ng-click="vm.toggleAge($event)" ng-disabled="vm.filter.age.twentyAndFewer && vm.onlyOneAge"/>&nbsp;0-20</label></li>
+              <li><label ng-click="$event.stopPropagation()"><input type="checkbox" ng-model="vm.filter.age.twentyOneToForty" ng-click="vm.toggleAge($event)" ng-disabled="vm.filter.age.twentyOneToForty && vm.onlyOneAge"/>&nbsp;21-40</label></li>
+              <li><label ng-click="$event.stopPropagation()"><input type="checkbox" ng-model="vm.filter.age.fortyOneToSixty" ng-click="vm.toggleAge($event)" ng-disabled="vm.filter.age.fortyOneToSixty && vm.onlyOneAge"/>&nbsp;41-60</label></li>
+              <li><label ng-click="$event.stopPropagation()"><input type="checkbox" ng-model="vm.filter.age.sixtyOneToEighty" ng-click="vm.toggleAge($event)" ng-disabled="vm.filter.age.sixtyOneToEighty && vm.onlyOneAge"/>&nbsp;61-80</label></li>
+              <li><label ng-click="$event.stopPropagation()"><input type="checkbox" ng-model="vm.filter.age.eightyOneAndGreater" ng-click="vm.toggleAge($event)" ng-disabled="vm.filter.age.eightyOneAndGreater && vm.onlyOneAge"/>&nbsp;81+</label></li>
+              <li class="dropdown-header"><h6>Race</h6></li>
+              <li><label ng-click="$event.stopPropagation()"><input type="checkbox" ng-model="vm.filter.race.africanAmerican" ng-click="vm.toggleRace($event)" ng-disabled="vm.filter.race.africanAmerican && vm.onlyOneRace"/>&nbsp;African American</label></li>
+              <li><label ng-click="$event.stopPropagation()"><input type="checkbox" ng-model="vm.filter.race.white" ng-click="vm.toggleRace($event)" ng-disabled="vm.filter.race.white && vm.onlyOneRace"/>&nbsp;White</label></li>
+              <li><label ng-click="$event.stopPropagation()"><input type="checkbox" ng-model="vm.filter.race.asian" ng-click="vm.toggleRace($event)" ng-disabled="vm.filter.race.asian && vm.onlyOneRace"/>&nbsp;Asian</label></li>
+              <li><label ng-click="$event.stopPropagation()"><input type="checkbox" ng-model="vm.filter.race.other" ng-click="vm.toggleRace($event)" ng-disabled="vm.filter.race.other && vm.onlyOneRace"/>&nbsp;Other</label></li>
+            </ul>
+          </div>
+        </div>
+        <div class="form-group col-lg-2 col-md-4">
+          <div class="dropdown" uib-dropdown>
+            <a class="btn btn-default btn-outline btn-block dropdown-toggle" type="button"
+              data-toggle="dropdown" uib-dropdown-toggle role="button">
+              Mapping <i class="fa fa-caret-down"></i><br/><b class="teal small">{{vm.filter.location}} Location</b>
+            </a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="#" ng-click="vm.locationSelected('Incident')">Incident Location</a></li>
+              <li><a href="#" ng-click="vm.locationSelected('Residence')">Residence Location</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-lg-12 typeahead">
+          <!--TODO: Display popover only when vm.noResultingCauses is true -->
+          <div class="input-group" popover-trigger="vm.noResultingCauses" uib-popover="No results found">
+            <span class="input-group-addon"><i class="fa fa-search"></i></span>
+            <input type="text" ng-model="vm.filter.causeOfDeath" placeholder="Search for keywords across Cause of Death and Other Significant Conditions"
+              uib-typeahead="cause.cause for cause in vm.getCausesOfDeath($viewValue)"
+              typeahead-loading="vm.loadingCauses" typeahead-no-results="vm.noResultingCauses"
+              typeahead-on-select="vm.causeOfDeathSelected()" typeahead-editable="false"
+              typeahead-focus-first="false" typeahead-select-on-exact="true"
+              ng-blur="vm.causeOfDeathSelected()" class="form-control" />
+          </div>
+          <!--<i ng-show="vm.loadingCauses" class="glyphicon glyphicon-refresh"></i>-->
+        </div>
+      </div>
+    </div>
+
+    <h2 class="banner visible-xs-block"><small>view the</small> results</h2>
+
+    <div class="row">
+        <div class="col-md-8">
+          <div class="text-right" ng-show="vm.totalFiltered !== null">
+              <h1 class="huge teal">{{vm.totalFiltered}}</h1>
+              <p>
+                <span ng-show="vm.filter.mannerOfDeath">{{vm.filter.mannerOfDeath}}</span> Deaths
+                <span ng-show="vm.filter.causeOfDeath">labeled {{vm.filter.causeOfDeath}}</span>
+                in {{(vm.filter.censusTract) ? vm.filter.censusTract : 'Baltimore'}}
+                <span ng-hide="vm.filter.endDate"> during {{vm.filter.startDate | amDateFormat:'MMM YYYY'}}</span>
+                <span ng-show="vm.filter.endDate"> during {{vm.filter.startDate | amDateFormat:'MMM YYYY'}} - {{vm.filter.endDate | amDateFormat:'MMM YYYY'}}</span>
+                <span ng-hide="vm.allDemo"> among custom demographics</span>
+              </p>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              Timeline
+              <div class="pull-right">
+                <!-- TODO:
+                These #/% buttons should only change the TIMELINE:-->
+
+                <div class="btn-group">
+                  <label class="btn btn-default btn-outline btn-xs" ng-click="vm.toggleDataFormat()"
+                  ng-model="vm.chartFormat" uib-btn-radio="'count'">Number</label>
+                  <label class="btn btn-default btn-outline btn-xs" ng-click="vm.toggleDataFormat()"
+                  ng-model="vm.chartFormat" uib-btn-radio="'percent'">Percentage</label>
+                </div>
+                <!--<div class="btn-group" class="dropdown" uib-dropdown>
+                  <button type="button" class="btn btn-default btn-outline btn-xs dropdown-toggle" data-toggle="dropdown"  uib-dropdown-toggle role="button">
+                    Download
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu pull-right" role="menu">
+                    <li><a href="#"><i class="fa fa-fw fa-download"></i> Download PNG</a></li>
+                    <li><a href="#"><i class="fa fa-fw fa-download"></i> Download CSV</a></li>
+                  </ul>
+                </div>-->
+              </div>
+            </div>
+            <div class="panel-body">
+              <vertical-bars data="vm.data" title="Total Deaths" columns="vm.columns" label="vm.chartFormat" vmdata="{{vm}}" min="vm.minValue" max="vm.maxValue" on-click="vm.dateMonthSelected" current-start-date={{vm.filter.startDate}} current-end-date={{vm.filter.endDate}}></vertical-bars>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              Census Tracts
+              <div class="pull-right">
+                <div class="btn-group">
+                </div>
+                <!-- PER CAPITA TODO:
+                These #/%/capita buttons should only change the MAP:
+                  <label class="btn btn-default btn-outline btn-xs" ng-click="vm.toggleDataFormat()"
+                  ng-model="vm.chartFormat" uib-btn-radio="'count'">Number</label>
+                  <label class="btn btn-default btn-outline btn-xs" ng-click="vm.toggleDataFormat()"
+                  ng-model="vm.chartFormat" uib-btn-radio="'percent'">Percentage</label>
+                  <label class="btn btn-default btn-outline btn-xs" ng-click="vm.toggleDataFormat()"
+                  ng-model="vm.chartFormat" uib-btn-radio="'per_capita'">Per Capita</label>
+
+              -->
+
+                <!--<div class="btn-group" class="dropdown" uib-dropdown>
+                  <button type="button" class="btn btn-default btn-outline btn-xs dropdown-toggle" data-toggle="dropdown"  uib-dropdown-toggle role="button">
+                    Download
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu pull-right" role="menu">
+                    <li><a href="#"><i class="fa fa-fw fa-download"></i> Download PNG</a></li>
+                    <li><a href="#"><i class="fa fa-fw fa-download"></i> Download CSV</a></li>
+                  </ul>
+                </div>-->
+              </div>
+            </div>
+            <div class="panel-body">
+              <map data="vm.data" title="" filtervalues="{{vm.mapData}}" min="{{vm.mapResults.min}}" max="{{vm.mapResults.max}}" vmdata="{{vm}}" on-click="vm.censusTractSelected"></map>
+              <div id="legend" class="legend-container">
+                <p>
+                  {{vm.chartFormat === 'count' ? 'Deaths per 100,000' : 'Percentage'}}
+                  (more than 5 deaths per tract)
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              Percent change in deaths per month<br />
+              between:
+              <b>{{vm.filter.startDate | amDateFormat:'MMM YYYY'}}</b>{{(vm.filter.endDate) ? ' and ' : ' '}}<b>{{vm.filter.endDate | amDateFormat:'MMM YYYY'}}</b>
+              <div class="pull-right">
+                <!-- <div class="btn-group" class="dropdown" uib-dropdown>
+                  <button type="button" class="btn btn-default btn-outline btn-xs dropdown-toggle" data-toggle="dropdown"  uib-dropdown-toggle role="button">
+                    Download
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu pull-right" role="menu">
+                    <li><a href="#"><i class="fa fa-fw fa-download"></i> Download PNG</a></li>
+                    <li><a href="#"><i class="fa fa-fw fa-download"></i> Download CSV</a></li>
+                  </ul>
+                </div> -->
+              </div>
+            </div>
+            <div class="panel-body text-center">
+              <h1 class="{{(vm.compare.delta < 0) ? 'green' : ((vm.compare.delta > 0) ? 'red' : 'text-muted')}}"><i class="glyphicon {{(vm.compare.delta < 0) ? 'glyphicon-arrow-down green' : ((vm.compare.delta > 0) ? 'glyphicon-arrow-up red' : 'glyphicon-minus text-muted')}}"></i><br/>{{vm.compare.percent}}%</h1>
+              <h6>{{Math.abs(vm.compare.delta)}} {{(vm.compare.delta < 0) ? 'lower' : ((vm.compare.delta > 0) ? 'higher' : 'not changed')}}</h6>
+            </div>
+<!--             <div class="panel-footer panel-footer-filters">
+                <div class="form-group">
+                  <div class="dropup" uib-dropdown>
+                    <a class="btn btn-default btn-outline btn-block dropdown-toggle" type="button"
+                      data-toggle="dropdown" uib-dropdown-toggle role="button">
+                      Compared to Month(s) <i class="fa fa-caret-down"></i><br/><b class="teal small">{{vm.filter.prevStartDate | amDateFormat:'MMM YYYY'}}
+                        {{(vm.filter.prevEndDate) ? '-' : ''}}{{vm.filter.prevEndDate | amDateFormat:'MMM YYYY'}}</b>
+                    </a>
+                    <ul class="dropdown-menu dropdown-lg dropdown-checkboxes" role="menu">
+                      <li class="dropdown-header"><h6>Start</h6></li>
+                      <li><div uib-datepicker ng-model="vm.filter.prevStartDate" id="prevStartDate"
+                        datepicker-options="vm.dateOptionsPrevStart" ng-click="$event.stopPropagation()"></div></li>
+                      <li class="dropdown-header">
+                        <button class="pull-right btn btn-default btn-xs btn-outline" ng-click="vm.clearPrevEndDate($event)">
+                          <i class="fa fa-close"></i> Clear</button>
+                        <h6>End (optional)</h6>
+                      </li>
+                      <li><div uib-datepicker ng-model="vm.filter.prevEndDate" id="prevEndDate"
+                        datepicker-options="vm.dateOptionsPrevEnd" ng-click="$event.stopPropagation()"></div></li>
+                    </ul>
+                  </div>
+                </div>
+            </div> -->
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              Gender
+            </div>
+            <div class="panel-body">
+              <!-- PIE CHART HERE
+              https://bl.ocks.org/mbostock/3887235
+              -->
+              <pie data="vm.dataByGender" title="" filtervalues="{{vm.dataByGender}}"  vmdata="{{vm}}" on-click="vm.genderSelected"></pie>
+
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              Age
+            </div>
+            <div class="panel-body">
+              <!-- PIE CHART HERE -->
+              <pie data="vm.dataByAge" title="" filtervalues="{{vm.dataByAge}}" vmdata="{{vm}}" on-click="vm.ageSelected"></pie>
+
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              Race
+            </div>
+            <div class="panel-body">
+              <!-- PIE CHART HERE -->
+              <pie data="vm.dataByRace" title="" filtervalues="{{vm.dataByRace}}" vmdata="{{vm}}" on-click="vm.raceSelected"></pie>
+
+            </div>
+          </div>
+          <!--TODO: Dynamic total and text based on the "Manner of Death" selected in the main dropdown, and the "Aggregated by" field selected in the panel footer -->
+          <!-- <div class="panel panel-default">
+            <div class="panel-heading">
+              Historic High
+              <div class="pull-right">
+                <div class="btn-group" class="dropdown" uib-dropdown>
+                  <button type="button" class="btn btn-default btn-outline btn-xs dropdown-toggle" data-toggle="dropdown"  uib-dropdown-toggle role="button">
+                    Download
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu pull-right" role="menu">
+                    <li><a href="#"><i class="fa fa-fw fa-download"></i> Download PNG</a></li>
+                    <li><a href="#"><i class="fa fa-fw fa-download"></i> Download CSV</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-xs-3">
+                  <i class="fa fa-line-chart fa-5x fa-fw"></i>
+                </div>
+                <div class="col-xs-9 text-right">
+                  <div class="huge">27</div>
+                  <p>Natural Deaths in March 2015</p>
+                </div>
+              </div>
+            </div>
+            <div class="panel-footer"> -->
+                <!-- <div class="form-group">
+                  <label>Aggregated by</label>
+                  <select class="form-control">
+                    <option>Month</option>
+                    <option>Year</option>
+                  </select>
+                </div>
+              </div>
+          </div> -->
+        </div>
+      </div>
+    </div>
+  </section>
+</section>

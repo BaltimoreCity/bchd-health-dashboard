@@ -1,0 +1,28 @@
+<section class="container-sidebarred" ng-controller="HeaderController as vm">
+    <h2>Hi, <span ng-bind="vm.authentication.user.displayName"></span>. <small>Edit your account details</small></h2>
+    <div class="row">
+        <div class="col-sm-12">
+            <ul class="nav nav-tabs">
+                <li ui-sref-active="active">
+                    <a ui-sref="settings.profile">Edit Profile</a>
+                </li>
+                <li ui-sref-active="active">
+                    <a ui-sref="settings.picture">Change Profile Picture</a>
+                </li>
+                <li ui-sref-active="active"> 
+                    <!--DEV TODO: Add back in? (conflicts with ng-controller above, which is needed for user.displayName to show)
+                        ng-show="vm.user.provider === 'local'"  
+                    ??-->
+                    <a ui-sref="settings.password">Change Password</a>
+                </li>
+                <!--<li ui-sref-active="active">
+                    <a ui-sref="settings.accounts">Manage Social Accounts</a>
+                </li>-->
+            </ul>
+            <div class="tab-content" style="background: white; border: 1px solid #ccc; border-top: none;">
+                <br/>
+                <div ui-view></div>
+            </div>
+        </div>
+    </div>
+</section>

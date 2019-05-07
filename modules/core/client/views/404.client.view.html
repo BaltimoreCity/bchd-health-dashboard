@@ -1,0 +1,11 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4 col-lg-offset-4 col-sm-6 col-sm-offset-3 text-center content-middle">
+            <h1><i class="fa fa-3x fa-chain-broken teal"></i></h1>
+            <h3>Page not found</h3>
+            <p ng-if="vm.errorMessage" ng-bind="vm.errorMessage"></p>
+            <p ng-if="!vm.errorMessage">Sorry, that page isn't here.</p>
+            <a ui-sref="home" class="btn btn-primary btn-outline">Start over at the home page</a>
+        </div>
+    </div>
+</div>

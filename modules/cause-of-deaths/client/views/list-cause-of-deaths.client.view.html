@@ -1,0 +1,22 @@
+<section>
+  <div class="page-header">
+    <h1>Cause of deaths</h1>
+  </div>
+  <div class="list-group">
+    <a ng-repeat="cause-of-death in vm.causeOfDeaths"
+       ui-sref="causeOfDeaths.view({ cause-of-deathId: cause-of-death._id })"
+       class="list-group-item">
+      <small class="list-group-item-text">
+        Posted on
+        <span ng-bind="causeOfDeath.created | date:'mediumDate'"></span>
+        by
+        <span ng-if="causeOfDeath.user" ng-bind="causeOfDeath.user.displayName"></span>
+        <span ng-if="!causeOfDeath.user">Deleted User</span>
+      </small>
+      <h4 class="list-group-item-heading" ng-bind="cause-of-death.name"></h4>
+    </a>
+  </div>
+  <div class="alert alert-warning text-center" ng-if="vm.causeOfDeaths.$resolved && !vm.causeOfDeaths.length">
+    No Cause of deaths yet, why don't you <a ui-sref="causeOfDeaths.create">create one</a>?
+  </div>
+</section>
